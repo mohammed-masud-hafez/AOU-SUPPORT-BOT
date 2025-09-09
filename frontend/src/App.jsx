@@ -76,7 +76,7 @@ export default function App() {
     setMsg("");
     try {
       setLoading(true);
-      const res = await axios.post("http://127.0.0.1:8000/chat", { message: text });
+      const res = await axios.post("https://aou-support-api.onrender.com/chat", { message: text });
       const ans = res?.data?.answer ?? "ما وصل رد.";
       saveActive([...next, { role: "bot", text: ans }]);
     } catch (err) {
