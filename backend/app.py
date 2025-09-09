@@ -1,11 +1,14 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import pandas as pd
+import os
 import google.generativeai as genai
 from rapidfuzz import process, fuzz
+from dotenv import load_dotenv  
 
-# إعداد Google Gemini
-genai.configure(api_key="AIzaSyAXC1z3hy6JPN-zBLQC4HDYiR5W-RbMGyc")  # ← حط مفتاحك بين علامات التنصيص
+load_dotenv()
+api_key = os.getenv("GEMINI_API_KEY")
+genai.configure(api_key=api_key)
 model = genai.GenerativeModel("models/gemini-1.5-flash")
 
 app = Flask(__name__)
